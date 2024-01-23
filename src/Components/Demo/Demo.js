@@ -1,30 +1,38 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import "./Demo.css";
 import Span from "../UI/Span/Span";
 import Button from "../UI/Button/Button";
 
 function Demo() {
   let [count, setCount] = useState(0);
+  let [activate, setActivate] = useState(false);
 
-  function incrementHandler() {
-    setCount(count + 1);
+  let incrementHandler = useCallback(
+    function () {
+      if (activate) setCount(count + 1);
+    },
+    [activate]
+  );
+
+  let decrementHandler = useCallback(
+    function () {
+      if (activate) setCount(count - 1);
+    },
+    [activate]
+  );
+
+  function activateHandler() {
+    setActivate(true);
   }
-  function decrementHandler() {
-    setCount(count - 1);
-  }
+
   console.log("DEMO EXECUTED");
 
   return (
     <div>
-      {/* <button className="counterBtn" onClick={decrementHandler}>
-        -
-      </button> */}
       <Button clickHandler={decrementHandler}>-</Button>
-      <Span>{10}</Span>
+      <Span>{count}</Span>
       <Button clickHandler={incrementHandler}>+</Button>
-      {/* <button className="counterBtn" onClick={incrementHandler}>
-        +
-      </button> */}
+      <Button clickHandler={activateHandler}>Activate</Button>
     </div>
   );
 }
