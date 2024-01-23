@@ -9,20 +9,21 @@ function Demo() {
 
   let incrementHandler = useCallback(
     function () {
-      if (activate) setCount(count + 1);
+      if (activate) setCount((count) => count + 1);
     },
     [activate]
   );
 
   let decrementHandler = useCallback(
     function () {
-      if (activate) setCount(count - 1);
+      if (activate) setCount((count) => count - 1);
     },
     [activate]
   );
 
   function activateHandler() {
     setActivate(true);
+    setCount(0);
   }
 
   console.log("DEMO EXECUTED");
