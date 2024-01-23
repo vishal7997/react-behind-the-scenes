@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Demo.css";
 import Span from "../UI/Span/Span";
+import Button from "../UI/Button/Button";
 
 function Demo() {
   let [count, setCount] = useState(0);
@@ -15,13 +16,15 @@ function Demo() {
 
   return (
     <div>
-      <button className="counterBtn" onClick={decrementHandler}>
+      {/* <button className="counterBtn" onClick={decrementHandler}>
         -
-      </button>
-      <Span>{count}</Span>
-      <button className="counterBtn" onClick={incrementHandler}>
+      </button> */}
+      <Button clickHandler={decrementHandler}>-</Button>
+      <Span>{10}</Span>
+      <Button clickHandler={incrementHandler}>+</Button>
+      {/* <button className="counterBtn" onClick={incrementHandler}>
         +
-      </button>
+      </button> */}
     </div>
   );
 }
