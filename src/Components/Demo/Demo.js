@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import "./Demo.css";
 import Span from "../UI/Span/Span";
 import Button from "../UI/Button/Button";
@@ -26,12 +26,16 @@ function Demo() {
     setCount(0);
   }
 
+  let list = useMemo(() => {
+    return [100, 200];
+  }, []);
+
   console.log("DEMO EXECUTED");
 
   return (
     <div>
       <Button clickHandler={decrementHandler}>-</Button>
-      <Span>{count}</Span>
+      <Span>{list}</Span>
       <Button clickHandler={incrementHandler}>+</Button>
       <Button clickHandler={activateHandler}>Activate</Button>
     </div>
